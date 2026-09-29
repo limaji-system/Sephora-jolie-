@@ -1,0 +1,24 @@
+CONTRAT DE SÉCURITÉ À IMPLÉMENTER AVANT PRODUCTION
+
+Frontend
+  ↓ crée une commande via backend
+Backend
+  ↓ récupère photoId depuis une liste autorisée
+  ↓ récupère le prix depuis la base
+  ↓ crée la commande
+  ↓ crée le checkout PayPal / carte
+Prestataire
+  ↓ traite le paiement
+Webhook serveur
+  ↓ vérifie la signature
+  ↓ vérifie montant + devise + commande + statut
+Supabase
+  ↓ transaction marquée PAID
+  ↓ photo_access créé pour l'utilisateur
+Storage privé
+  ↓ URL signée courte durée
+Frontend
+  ↓ affiche la photo seulement après vérification d'accès
+
+RÈGLE :
+Le retour navigateur / success URL ne constitue JAMAIS à lui seul une preuve de paiement.
